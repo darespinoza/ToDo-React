@@ -46,16 +46,21 @@ function App() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Todo List</h1>
+    <div className="container m-5">
+      <h1 className="text-center mb-4">Todo List</h1>
 
-      <input
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Write a todo..."
-      />
-
-      <button onClick={addTodo}>Add</button>
+      <div className="input-group mb-3">
+        <input
+          type="text"
+          className="form-control"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Write a todo..."
+        />
+        <button className="btn btn-primary" onClick={addTodo}>
+          Add
+        </button>
+      </div>
 
       <TodoList todos={todos} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />
     </div>

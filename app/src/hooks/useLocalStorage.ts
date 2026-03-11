@@ -16,6 +16,22 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     } catch {}
   }, [key, value]);
 
+  useEffect(() => {
+    const handleStorageChange = (event: StorageEvent) => {
+      if (event.key === key && event.newValue) {
+        setValue(JSON.parse(event.newValue));
+      }
+    };
+
+    // Listen to storage event
+    window.addEventListener("storage", handleStorageChange);
+
+    // Clean-up function
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, [key]);
+
   // This is a tuple
   return [value, setValue] as const;
 }

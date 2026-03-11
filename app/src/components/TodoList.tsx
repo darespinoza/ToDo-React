@@ -9,7 +9,7 @@ type Props = {
 
 function TodoList({ todos, deleteTodo, toggleTodo }: Props) {
   return (
-    <ul>
+    <ul className="list-group">
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}

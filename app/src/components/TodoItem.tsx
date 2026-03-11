@@ -8,7 +8,7 @@ type Props = {
 
 function TodoItem({ todo, deleteTodo, toggleTodo }: Props) {
   return (
-    <li>
+    <li className="list-group-item d-flex justify-content-between align-items-center">
       <span
         onClick={() => toggleTodo(todo.id)}
         style={{
@@ -18,7 +18,12 @@ function TodoItem({ todo, deleteTodo, toggleTodo }: Props) {
       >
         {todo.text}
       </span>
-      <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+      <button
+        className="btn btn-danger btn-sm"
+        onClick={() => deleteTodo(todo.id)}
+      >
+        Delete
+      </button>
     </li>
   );
 }
