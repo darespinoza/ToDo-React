@@ -1,10 +1,24 @@
 import { useState } from "react";
 import TodoList from "./components/TodoList";
 import { Todo } from "./types";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 function App() {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  // useState for Todos
+  // const [todos, setTodos] = useState<Todo[]>(() => {
+  //   // Lazy initializer, avoids an extra render on start up
+  //   const savedTodos = localStorage.getItem("todos");
+  //   return savedTodos ? JSON.parse(savedTodos) : [];
+  // });
+
+  // Custom useLocalStorate hook
+  const [todos, setTodos] = useLocalStorage<Todo[]>("todos", []);
   const [input, setInput] = useState("");
+
+  // Save todos on local storage
+  // useEffect(() => {
+  //   localStorage.setItem("todos", JSON.stringify(todos));
+  // }, [todos]);
 
   const addTodo = () => {
     if (input.trim() === "") return;
