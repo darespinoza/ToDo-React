@@ -57,7 +57,11 @@ function App() {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Write a todo..."
         />
-        <button className="btn btn-primary" onClick={addTodo}>
+        <button
+          className="btn btn-primary"
+          onClick={addTodo}
+          disabled={!input.trim()}
+        >
           Add
         </button>
       </div>
